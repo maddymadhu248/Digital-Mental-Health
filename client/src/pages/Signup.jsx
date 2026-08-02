@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 
-const api = axios.create({ baseURL: '/api' });
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const api = axios.create({ baseURL: API_BASE_URL });
 
 const Signup = ({ setUser, darkMode }) => {
   const [form, setForm] = useState({ name: '', email: '', password: '' });

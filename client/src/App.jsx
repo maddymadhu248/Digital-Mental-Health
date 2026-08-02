@@ -8,7 +8,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ClassroomScene from './components/ClassroomScene';
 
-const api = axios.create({ baseURL: '/api' });
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const api = axios.create({ baseURL: API_BASE_URL });
 
 const AppShell = ({ children, user, setUser, darkMode, setDarkMode }) => {
   const navigate = useNavigate();

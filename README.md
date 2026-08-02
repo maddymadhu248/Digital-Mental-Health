@@ -1,34 +1,66 @@
 # Digital Mental Health and Psychological Support System
 
-This project is a student-focused wellness app with authentication, a 3D dashboard, AI-style support chat, mood tracking, self-assessment, resources, and emergency support.
+This project is a student-focused wellness app built with React (Vite), Three.js, Node.js, Express, and MongoDB (with local in-memory fallback store).
 
 ## Features
-- Signup and login with JWT
-- Dashboard with Three.js visual experience
-- Mood tracker with charting
-- Self-assessment with result interpretation
-- AI support chat with simulated empathetic replies
-- Resource library with search
-- Emergency support and profile page
+- **3D Dashboard**: Atmospheric visual experience powered by Three.js
+- **Authentication**: JWT-based signup/login with fallback memory store
+- **Mood Tracker**: Log daily emotions and track trends via Chart.js
+- **Self-Assessment**: Mental wellness questionnaires with score interpretations
+- **AI Support Chat**: Simulated empathetic assistant for student support
+- **Resource Library**: Searchable articles and wellness guidelines
+- **Emergency Contacts**: Campus and crisis helpline directory
 
-## Installation
+---
 
-### 1. Install root dependencies
+## Local Development
+
+### 1. Install Dependencies
+```bash
 npm install
-
-### 2. Install client and server dependencies
 npm run install:client
 npm run install:server
+```
 
-### 3. Configure environment
-Copy the sample file and update it:
+### 2. Environment Setup
+```bash
 cp server/.env.example server/.env
+```
 
-### 4. Run the app
+### 3. Run Application
+```bash
 npm run dev
+```
+- **Frontend**: http://localhost:5173
+- **Backend**: http://localhost:5000
 
-The frontend will be available at http://localhost:5173 and the backend at http://localhost:5000.
+---
 
-## Sample data
-- Create an account through the signup page to start using the app.
-- The app stores moods, assessments, and profile details in MongoDB.
+## Deployment Guide
+
+### 1. Backend Deployment (Render)
+1. Log in to [Render](https://render.com) and click **New +** -> **Web Service**.
+2. Connect your GitHub repository (`Digital-Mental-Health`).
+3. Set the following settings:
+   - **Root Directory**: `server`
+   - **Build Command**: `npm install`
+   - **Start Command**: `node server.js`
+4. Add Environment Variables:
+   - `MONGODB_URI`: Your MongoDB Atlas connection string (or omit to use in-memory store)
+   - `JWT_SECRET`: A strong secret key
+   - `FRONTEND_URL`: Your Vercel frontend URL (e.g., `https://digital-mental-health.vercel.app`)
+5. Deploy and copy your backend service URL (e.g., `https://mental-health-app-api.onrender.com`).
+
+---
+
+### 2. Frontend Deployment (Vercel)
+1. Log in to [Vercel](https://vercel.com) and click **Add New** -> **Project**.
+2. Import your GitHub repository (`Digital-Mental-Health`).
+3. Configure Project Settings:
+   - **Framework Preset**: Vite
+   - **Root Directory**: `client`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+4. Add Environment Variable:
+   - `VITE_API_URL`: `https://<your-render-backend-url>/api` (e.g., `https://mental-health-app-api.onrender.com/api`)
+5. Click **Deploy**.
